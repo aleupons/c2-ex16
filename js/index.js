@@ -31,7 +31,7 @@ const setComptador = (comptador) => (comptadorIntents = comptador);
 inputParaula.addEventListener("keyup", (e) => {
   if (e.target.value !== "") {
     const lletra = e.target.value.charAt(e.target.value.length - 1);
-    if (comptadorIntents < 12) {
+    if (comptadorIntents < 11) {
       const indexs = compararLletres(paraulaGlobal, lletra);
       if (indexs.length !== 0) {
         const incognites = lletres.textContent.split(" ");
@@ -43,17 +43,19 @@ inputParaula.addEventListener("keyup", (e) => {
         dibuixarError(comptadorIntents, lletra);
       }
     } else {
+      dibuixarError(comptadorIntents, lletra);
       final.textContent = "Has perdut.";
       inputParaula.disabled = true;
       reiniciar();
     }
-  } else if (
-    lletres.textContent.split(" ").join("").toLowerCase() ===
-    paraulaGlobal.toLowerCase()
-  ) {
-    final.textContent = "Molt bé, has encertat la paraula.";
-    inputParaula.disabled = true;
-    reiniciar();
+    if (
+      lletres.textContent.split(" ").join("").toLowerCase() ===
+      paraulaGlobal.toLowerCase()
+    ) {
+      final.textContent = "Molt bé, has encertat la paraula.";
+      inputParaula.disabled = true;
+      reiniciar();
+    }
   }
 });
 
