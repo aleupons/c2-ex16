@@ -9,3 +9,6 @@ svg > * {
   stroke-miterlimit: 10;
   transition: 0.25s;
 }
+svg * {
+  display: none;
+}
